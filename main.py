@@ -1,16 +1,18 @@
-from caracter import Caracter
+from caracter import Hero, Ennemy
 
 
 def main():
-    hero = Caracter(name="Roi Arture", health=100, damage=5)
-    ennemy = Caracter(name="valeur", health=30, damage=2)
+    hero = Hero(name="Roi Arture", health=100)
+    ennemy = Ennemy(name="voleur", health=30)
 
     while True:
         hero.attaque(ennemy)
         ennemy.attaque(hero)
 
-        print(f"{hero.name} a attaquer {ennemy.name} et a fait {hero.damage}")
-        print(f"{ennemy.name} a attaquer {hero.name} et a fait {ennemy.damage}")
+        print(f"vie de {hero.name} :{hero.health}")
+        print(f"vie de {ennemy.name} :{ennemy.health}")
+
+        input()
 
 
 if __name__ == '__main__':

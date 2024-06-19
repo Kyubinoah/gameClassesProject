@@ -1,6 +1,8 @@
+from weapon import fists
+
 """
 Les fonction dans les classes sont appeler methode
-et les classe on est variable local appeler attributs
+et les classe on des est variable local appeler attributs
 """
 
 
@@ -17,7 +19,8 @@ class Caracter:
     chaque attribut passer en paramètre sont unique au instance créé
     elle sont appeler 'Object-Level_variables'
     """
-    def __init__(self, name: str, health: int, damage: int) -> None:
+
+    def __init__(self, name: str, health: int) -> None:
         """
         Construction du personnage
         :param name:
@@ -28,7 +31,8 @@ class Caracter:
         self.name = name
         self.health = health
         self.health_max = health
-        self.damage = damage
+
+        self.weapon = fists
 
     # création d'une méthode
     def attaque(self, target) -> None:
@@ -40,9 +44,18 @@ class Caracter:
         """
 
         # Diminution de l'atribut health de l'instance par rapport a l'atribut damage de la class
-        target.hp -= self.damage
-        target.hp = max(target.hp, 0)
+        target.health -= self.weapon.damage
+        target.health = max(target.health, 0)
+        print(f"{self.name} fait {self.weapon.damage} degat a {target.name} avec {self.weapon.name}")
 
 
+class Hero(Caracter):
+    def __init__(self, name: str, health: int) -> None:
+        # Fait heriter la class Hero de Caracter pour avoir ses atributs et ses methodes
+        super().__init__(name=name, health=health)
 
 
+class Ennemy(Caracter):
+    def __init__(self, name: str, health: int) -> None:
+        # Fait heriter la class Ennemi de Caracter pour avoir ses atributs et ses methodes
+        super().__init__(name=name, health=health)
